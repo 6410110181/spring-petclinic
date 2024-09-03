@@ -2,12 +2,12 @@
 pipeline {
     agent none
    stages {     
-    stage('Maven Install') {
+    stage('Build') {
       agent {         
        docker {          
-         image 'maven:3.5.0'         
-     }       
-  }       
+         image ('anapsix/alpine-java').inside {sh 'java -version'}       
+  }
+}       
   steps {
        sh 'mvn clean install'
        }
